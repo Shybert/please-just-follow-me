@@ -12,10 +12,11 @@ registerPatcher({
     process: [
       {
         load: {
-          signature: 'ECZN'
+          signature: 'RACE'
         },
-        patch: function(record) {
+        patch: record => {
           helpers.logMessage(`Patching ${xelib.LongName(record)}`)
+          xelib.SetFlag(record, 'DATA\\Flags', 'No Combat In Water', false)
         }
       }
     ]
