@@ -12,7 +12,10 @@ registerPatcher({
     process: [
       {
         load: {
-          signature: 'RACE'
+          signature: 'RACE',
+          filter: record => {
+            return !xelib.HasKeyword(record, 'Vampire')
+          }
         },
         patch: record => {
           helpers.logMessage(`Patching ${xelib.LongName(record)}`)
